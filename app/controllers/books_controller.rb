@@ -8,7 +8,7 @@ class BooksController < ApplicationController
     @user = User.last
     @book = Book.new(book_params)
     if @book.save
-      UserNotifierMailer.notify_new_book(@user, @book).deliver
+      NewBookMailer.notify_new_book(@user, @book).deliver
       redirect_to root_path
     else
       render :new
